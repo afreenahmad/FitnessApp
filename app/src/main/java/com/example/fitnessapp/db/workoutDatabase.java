@@ -44,11 +44,11 @@ public abstract class workoutDatabase extends RoomDatabase{
     };
     private static void createWorkoutTable(){
         for(int i=0; i < DefaultContent.NAME.length;i++){
-            insert(new workout(0, DefaultContent.NAME[i], DefaultContent.MUSCLEGROUP[i]));
+            insert(new workout(0, DefaultContent.NAME[i], DefaultContent.MUSCLEGROUP[i], DefaultContent.DESCRIPTION[i], false));
 
         }
     }
-    public static void getJoke(int id, workoutListener listener) {
+    public static void getWorkout(int id, workoutListener listener) {
         Handler handler = new Handler(Looper.getMainLooper()) {
             @Override
             public void handleMessage(Message msg) {
@@ -64,15 +64,15 @@ public abstract class workoutDatabase extends RoomDatabase{
         })).start();
     }
 
-    private static void insert(workout workout) {
+    public static void insert(workout workout) {
         (new Thread(()-> INSTANCE.workoutDAO().insert(workout))).start();
 
     }
-    private static void delete(workout workout) {
-        (new Thread(()-> INSTANCE.workoutDAO().delete(workout))).start();
+    public static void delete(int workout_id) {
+        (new Thread(()-> INSTANCE.workoutDAO().delete(workout_id))).start();
 
     }
-    private static void update(workout workout) {
+    public static void update(workout workout) {
         (new Thread(()-> INSTANCE.workoutDAO().update(workout))).start();
 
     }

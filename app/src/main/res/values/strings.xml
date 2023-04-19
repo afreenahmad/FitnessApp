@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">FitnessApp</string>
+    <string name="RecyclerView">R </string>
+    <string name = "edit">Edit</string>
+    <string name = "init">initializing..</string>
+    <string name = "save">Save</string>
+
+
+
+    <string-array name="muscleGroup_array">
+        <item> Biceps </item>
+        <item> Triceps</item>
+        <item> Glutes</item>
+        <item> Hamstring</item>
+</string-array>
 </resources>

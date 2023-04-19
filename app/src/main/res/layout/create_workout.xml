@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+    <EditText
+        android:id="@+id/workoutNameEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintStart_toEndOf="@id/workoutNameTextView"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/workoutNameTextView"
+        />
+    <EditText
+        android:id="@+id/descripEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="add description..."
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@id/descripTextView"
+        app:layout_constraintStart_toStartOf="@id/workoutNameEditText"
+        android:clickable="true"
+        android:focusable="false"
+        />
+
+    <Spinner
+        android:id="@+id/muscleGroupSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"
+
+        android:ems="10"
+        app:layout_constraintStart_toStartOf="@id/workoutNameEditText"
+        app:layout_constraintBottom_toBottomOf="@id/MuscleGroupTextView"
+        />
+
+
+
+
+
+    <TextView
+        android:id="@+id/workoutNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Workout: "
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="50dp"
+        />
+
+    <TextView
+        android:id="@+id/descripTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        app:layout_constraintStart_toStartOf="@id/workoutNameTextView"
+        app:layout_constraintTop_toBottomOf="@id/workoutNameTextView"
+        android:layout_marginTop="30dp"
+        />
+
+    <TextView
+        android:id="@+id/MuscleGroupTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MuscleGroup"
+        app:layout_constraintStart_toStartOf="@id/descripTextView"
+        app:layout_constraintTop_toBottomOf="@id/descripTextView"
+        android:layout_marginTop="30dp"
+        />
+
+
+
+
+
+
+
+
+
+    />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,4 +12,8 @@ public class DefaultContent {
     public static String[] MUSCLEGROUP ={
             "Biceps, Triceps, Hamstrings, Quads, Forearms, Lats, Calves, Glutes, Trapezius, "
     };
+
+    public static  String[] DESCRIPTION = {
+            "fgddg"
+    };
 }

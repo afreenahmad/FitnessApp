@@ -11,15 +11,15 @@ import java.util.List;
 
 @Dao
 public interface workoutDAO {
-    @Query("SELECT * FROM workouts WHERE liked = :onlyLiked " +
+    @Query("SELECT * FROM workouts WHERE liked = :onlyAdded " +
             "ORDER BY name COLLATE NOCASE, rowid")
-    LiveData<List<workout>> getLiked(boolean onlyLiked);
+    LiveData<List<workout>> getAdded(boolean onlyAdded);
 
     @Query("SELECT * FROM workouts ORDER BY name COLLATE NOCASE, rowid")
     LiveData<List<workout>> getAll();
 
-    @Query("SELECT * FROM workouts WHERE rowid = :id")
-    LiveData<workout> getById(int id);
+    @Query("SELECT * FROM workouts WHERE rowid = :workout_id")
+    LiveData<workout> getById(int workout_id);
 
     @Insert
     void insert(workout... workouts);
@@ -28,8 +28,8 @@ public interface workoutDAO {
     void update(workout... workouts);
 
     @Delete
-    void delete(workout... workouts);
+    void delete(workout...user);
 
     @Query("DELETE FROM workouts WHERE rowid = :id")
-    void deleteById(int id);
+    void delete(int id);
 }
