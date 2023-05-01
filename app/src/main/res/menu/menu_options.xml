@@ -10,4 +10,9 @@
 
         app:showAsAction="ifRoom|withText"
         android:title="TODO" />
+    <item android:id="@+id/added_workouts"
+        android:icon="@drawable/added_icon"
+
+        app:showAsAction="ifRoom|withText"
+        android:title="TODO" />
 </menu>

@@ -28,8 +28,6 @@ public class workout {
 //    @ColumnInfo(name = "category")
 //    public String category;
 
-    @ColumnInfo(name = "liked")
-    public boolean liked;
 
     @ColumnInfo(name = "muscleGroup")
     public String muscleGroup;

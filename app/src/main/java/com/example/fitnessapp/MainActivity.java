@@ -13,11 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import com.example.fitnessapp.ViewHolder.WorkoutListAdapter;
+import com.example.fitnessapp.ViewHolder.WorkoutListHolder;
 import com.example.fitnessapp.db.workoutDatabase;
 import com.example.fitnessapp.db.WorkoutViewModel;
 public class MainActivity extends AppCompatActivity {
     private int workout_id;
+    private boolean filtered = false;
     private WorkoutViewModel WorkoutViewModel;
+
+
+
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -38,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu_options,menu);
         // menu.getItem(1).setIcon(R.drawable.)
+
         return true;
 
     }
@@ -48,6 +54,19 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_save:
                 startActivity(new Intent(this, AddActivity.class));
                 return true;
+
+            case R.id.added_workouts:
+                filtered = !filtered;
+
+
+
+                RecyclerView recyclerView = findViewById(R.id.recyclerView);
+                WorkoutListAdapter adapter = new WorkoutListAdapter(this);
+                recyclerView.setAdapter(adapter);
+                WorkoutViewModel = new ViewModelProvider(this).get(WorkoutViewModel.class);
+                WorkoutViewModel.filterWorkouts(filtered);
+                WorkoutViewModel.getAllWorkouts().observe(this, adapter::setWorkouts);
+
             default:
                 return super.onOptionsItemSelected(item);
         }

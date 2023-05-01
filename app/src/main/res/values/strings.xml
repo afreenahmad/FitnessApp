@@ -4,6 +4,9 @@
     <string name = "edit">Edit</string>
     <string name = "init">initializing..</string>
     <string name = "save">Save</string>
+    <string name = "Description">Description</string>
+    <string name="ms_Spinner">Choose a muscle group</string>
+
 
 
 

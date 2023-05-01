@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <androidx.appcompat.widget.Toolbar
@@ -13,38 +14,42 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
+
     <EditText
         android:id="@+id/workoutNameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:hint="Name of workout"
         android:ems="10"
         android:inputType="text"
-        app:layout_constraintStart_toEndOf="@id/workoutNameTextView"
-        android:layout_marginStart="20dp"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="@id/workoutNameTextView"
-        />
+        app:layout_constraintStart_toEndOf="@id/workoutNameTextView" />
+
     <EditText
         android:id="@+id/descripEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="add description..."
-        android:textStyle="italic"
+        android:hint="@string/Description"
+        android:inputType="text"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="@id/descripTextView"
-        app:layout_constraintStart_toStartOf="@id/workoutNameEditText"
-        android:clickable="true"
-        android:focusable="false"
-        />
+        app:layout_constraintStart_toStartOf="@id/workoutNameEditText" />
 
     <Spinner
         android:id="@+id/muscleGroupSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:spinnerMode="dropdown"
+        android:contentDescription="@string/ms_Spinner"
+
 
         android:ems="10"
-        app:layout_constraintStart_toStartOf="@id/workoutNameEditText"
+        android:minHeight="48dp"
+        android:spinnerMode="dropdown"
         app:layout_constraintBottom_toBottomOf="@id/MuscleGroupTextView"
-        />
+        app:layout_constraintStart_toStartOf="@id/workoutNameEditText" />
 
 
 
@@ -89,5 +94,5 @@
 
 
 
-    />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

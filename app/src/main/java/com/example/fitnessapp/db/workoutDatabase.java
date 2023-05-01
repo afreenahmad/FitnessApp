@@ -6,6 +6,7 @@ import android.os.Looper;
 import android.os.Message;
 
 import androidx.annotation.NonNull;
+import androidx.room.AutoMigration;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
@@ -44,7 +45,13 @@ public abstract class workoutDatabase extends RoomDatabase{
     };
     private static void createWorkoutTable(){
         for(int i=0; i < DefaultContent.NAME.length;i++){
-            insert(new workout(0, DefaultContent.NAME[i], DefaultContent.MUSCLEGROUP[i], DefaultContent.DESCRIPTION[i], false));
+            if(i == 4){
+                insert(new workout(0, DefaultContent.NAME[i], DefaultContent.MUSCLEGROUP[i], DefaultContent.DESCRIPTION[i], true));
+            }else{
+                insert(new workout(0, DefaultContent.NAME[i], DefaultContent.MUSCLEGROUP[i], DefaultContent.DESCRIPTION[i], false));
+
+
+            }
 
         }
     }

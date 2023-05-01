@@ -11,7 +11,7 @@ import java.util.List;
 
 @Dao
 public interface workoutDAO {
-    @Query("SELECT * FROM workouts WHERE liked = :onlyAdded " +
+    @Query("SELECT * FROM workouts WHERE isAdded = :onlyAdded " +
             "ORDER BY name COLLATE NOCASE, rowid")
     LiveData<List<workout>> getAdded(boolean onlyAdded);
 
@@ -30,6 +30,6 @@ public interface workoutDAO {
     @Delete
     void delete(workout...user);
 
-    @Query("DELETE FROM workouts WHERE rowid = :id")
-    void delete(int id);
+    @Query("DELETE FROM workouts WHERE rowid = :workout_id")
+    void delete(int workout_id);
 }
