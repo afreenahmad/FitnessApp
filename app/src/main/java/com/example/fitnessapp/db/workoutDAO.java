@@ -32,4 +32,6 @@ public interface workoutDAO {
 
     @Query("DELETE FROM workouts WHERE rowid = :workout_id")
     void delete(int workout_id);
+
+    //got rid of likes column
 }
