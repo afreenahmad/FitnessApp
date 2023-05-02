@@ -9,6 +9,28 @@
 
 
 
+<string-array name="color_scheme_entries">
+<item>Light</item>
+<item>Dark</item>
+</string-array>
+<string-array name="color_scheme_values">
+<item>light</item>
+<item>dark</item>
+</string-array>
+
+    <string-array name="card_scheme_values">
+        <item>Light</item>
+        <item>Dark</item>
+        <item>Inverted</item>
+    </string-array>
+    <string-array name="card_scheme_entries">
+        <item>light</item>
+        <item>dark</item>
+        <item>inverted</item>
+
+    </string-array>
+
+
 
     <string-array name="muscleGroup_array">
         <item> Biceps </item>
