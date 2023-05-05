@@ -2,17 +2,34 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/menu_save"
-        android:icon="@drawable/baseline_save_alt_24"
-        android:title="@string/save"
+        android:icon="@drawable/baseline_add_circle_24"
+        android:title="@string/Add"
         app:showAsAction="ifRoom|withText" />
-    <item android:id="@+id/menu_delete"
-        android:icon="@drawable/baseline_delete_24"
 
-        app:showAsAction="ifRoom|withText"
-        android:title="TODO" />
     <item android:id="@+id/added_workouts"
         android:icon="@drawable/added_icon"
+        android:title="@string/added"
+
 
         app:showAsAction="ifRoom|withText"
-        android:title="TODO" />
+
+
+        />
+    <item android:id="@+id/cancel_adding"
+        android:icon="@drawable/baseline_delete_24"
+        android:title="@string/cancel"
+
+
+        app:showAsAction="ifRoom|withText"
+
+
+        />
+
+    <item
+        android:id ="@+id/menu_settings"
+        android:title="settings"
+        app:showAsAction="never"
+        />
+
+
 </menu>

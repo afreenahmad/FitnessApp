@@ -4,15 +4,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.DialogFragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fitnessapp.db.workout;
 import com.example.fitnessapp.db.workoutDatabase;
@@ -26,12 +32,26 @@ public class AddActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_workout);
         setSupportActionBar(findViewById(R.id.toolbar));
+        ConstraintLayout constraintLayout = findViewById(R.id.my_constraint_layout);
 
         Spinner spinner = findViewById(R.id.muscleGroupSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.muscleGroup_array,
                 android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String colorScheme = prefs.getString("colorScheme", "");
+        if (colorScheme.equals("dark")) {
+            constraintLayout.setBackgroundColor(Color.DKGRAY);
+            TextView workoutNameTextView = findViewById(R.id.workoutNameTextView);
+            TextView descripTextView = findViewById(R.id.descripTextView);
+            TextView MuscleGroupTextView = findViewById(R.id.MuscleGroupTextView);
+            workoutNameTextView.setTextColor(Color.WHITE);
+            descripTextView.setTextColor(Color.WHITE);
+            MuscleGroupTextView.setTextColor(Color.WHITE);
+        } else {
+            constraintLayout.setBackgroundColor(Color.WHITE);
+        }
 
         workout_id = getIntent().getIntExtra("workout_id", -1);
 
@@ -56,8 +76,10 @@ public class AddActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_options, menu);
-        menu.getItem(1).setTitle("Cancel");
-        setTitle("Add Task");
+        menu.getItem(2).setTitle("Cancel");
+
+        menu.getItem(2).setVisible(true);
+        //setTitle("Add Workout");
 
         return true;
     }
@@ -68,15 +90,14 @@ public class AddActivity extends AppCompatActivity {
             case R.id.menu_save:
                 updateDatabase();
                 return true;
-            case R.id.menu_delete:
-                if (workout_id != -1) {
-                    ConfirmDeleteDialog confirmDialog = new ConfirmDeleteDialog();
-                    confirmDialog.show(getSupportFragmentManager(), "deletionConfirmation");
-                }
-                else {
-                    finish();
-                }
+
+            case R.id.cancel_adding:
+                // finish the AddActivity
+                finish();
+
                 return true;
+
+
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -113,24 +134,6 @@ public class AddActivity extends AppCompatActivity {
         outState.putBoolean("added", added);
     }
 
-    public static class ConfirmDeleteDialog extends DialogFragment {
 
-        @Override
-        public Dialog onCreateDialog(@NonNull Bundle savedInstanceState) {
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
-            builder.setTitle("Delete the joke?")
-                    .setMessage("You will not be able to undo the deletion!")
-                    .setPositiveButton("Delete",
-                            (dialog,id) -> {
-                                ((AddActivity) getActivity()).deleteRecord();
-                                getActivity().finish();
-                            })
-                    .setNegativeButton("Return to joke list",
-                            (dialog, id) -> getActivity().finish());
-            return builder.create();
-        }
-    }
 
 }

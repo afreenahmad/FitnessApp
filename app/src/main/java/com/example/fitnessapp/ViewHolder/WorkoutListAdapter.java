@@ -1,7 +1,10 @@
 package com.example.fitnessapp.ViewHolder;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +24,18 @@ public class WorkoutListAdapter extends RecyclerView.Adapter <WorkoutListHolder>
     public final LayoutInflater layoutInflater;
 
     private List<workout> workouts; // Cached copy of jokes
+    private Context context;
+    private boolean isDarkMode = false;
 
     public WorkoutListAdapter(Context context){
 
         layoutInflater = LayoutInflater.from(context);
+        this.context = context;
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        String colorScheme = sharedPreferences.getString("colorScheme", "");
+        if (colorScheme.equals("dark")) {
+            isDarkMode = true;
+        }
     }
 
     @NonNull
@@ -44,6 +55,21 @@ public class WorkoutListAdapter extends RecyclerView.Adapter <WorkoutListHolder>
             holder.muscleGroup.setText(current.muscleGroup);
             holder.description.setText(current.description);
 
+            Log.d("isDarkMode", String.valueOf(isDarkMode));
+
+            // Set the card color based on the current color scheme
+            if (isDarkMode) {
+                holder.cardView.setCardBackgroundColor(Color.DKGRAY);
+                holder.nameView.setTextColor(Color.WHITE);
+                holder.muscleGroup.setTextColor(Color.WHITE);
+                holder.description.setTextColor(Color.WHITE);
+            } else {
+                holder.cardView.setCardBackgroundColor(Color.WHITE);
+                holder.nameView.setTextColor(Color.BLACK);
+                holder.muscleGroup.setTextColor(Color.BLACK);
+                holder.description.setTextColor(Color.BLACK);
+            }
+
 
 
 
@@ -57,6 +83,8 @@ public class WorkoutListAdapter extends RecyclerView.Adapter <WorkoutListHolder>
             holder.muscleGroup.setText(R.string.init);
             holder.description.setText(R.string.init);
         }
+
+
     }
 
     @Override
@@ -67,6 +95,19 @@ public class WorkoutListAdapter extends RecyclerView.Adapter <WorkoutListHolder>
     }
     public void setWorkouts(List<workout> workouts){
         this.workouts = workouts;
+        notifyDataSetChanged();
+    }
+    public void updateColorScheme(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        String colorScheme = prefs.getString("colorScheme", "");
+        boolean isDarkModeEnabled = colorScheme.equals("dark");
+
+        int textColor = isDarkModeEnabled ? Color.WHITE : Color.BLACK;
+        int backgroundColor = isDarkModeEnabled ? Color.DKGRAY : Color.WHITE;
+
+        isDarkMode = isDarkModeEnabled;
+
+        // Notify the adapter that the data has changed
         notifyDataSetChanged();
     }
 }

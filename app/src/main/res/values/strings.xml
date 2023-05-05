@@ -6,6 +6,19 @@
     <string name = "save">Save</string>
     <string name = "Description">Description</string>
     <string name="ms_Spinner">Choose a muscle group</string>
+    <string name="addedText">Your Workouts</string>
+    <string name="Add">Add</string>
+    <string name="cancel">Cancel</string>
+    <string name="added">My Workouts</string>
+    <string-array name="color_scheme_entries">
+        <item>Light</item>
+        <item>Dark</item>
+    </string-array>
+    <string-array name="color_scheme_values">
+        <item>light</item>
+        <item>dark</item>
+    </string-array>
+
 
 
 
@@ -15,5 +28,10 @@
         <item> Triceps</item>
         <item> Glutes</item>
         <item> Hamstring</item>
+        <item> Quadriceps</item>
+        <item> Pectorals </item>
+        <item> Lats </item>
+        <item> Shoulders</item>
+        <item> Delts</item>
 </string-array>
 </resources>

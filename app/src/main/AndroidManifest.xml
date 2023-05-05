@@ -14,6 +14,9 @@
         <activity android:name=".AddActivity"
             android:windowSoftInputMode="adjustPan">
         </activity>
+        <activity android:name=".SettingsActivity"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">

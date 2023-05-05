@@ -40,7 +40,12 @@ public class WorkoutListHolder extends RecyclerView.ViewHolder {
         cardView = itemView.findViewById(R.id.cardView);
 
         isAdded.setOnClickListener(view -> {
-            Toast.makeText(itemView.getContext(), "clicked the liked button", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(itemView.getContext(), "you added a workout to your routine!", Toast.LENGTH_SHORT).show();
+            if (workouts.isAdded) {
+                Toast.makeText(itemView.getContext(), "you unadded the workout!", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(itemView.getContext(), "you added a workout to your routine!", Toast.LENGTH_SHORT).show();
+            }
             workouts.isAdded = !workouts.isAdded;
             workoutDatabase.update(workouts);
         });
